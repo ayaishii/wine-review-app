@@ -9,41 +9,35 @@ export const InputWine = (props) => {
     onClick,
   } = props;
 
-  const handleNameChange = (event) => {
-    onChangeWineName(event.target.value);
-  };
-
-  const handlePriceChange = (event) => {
-    onChangeWinePrice(event.target.value);
-  };
-
-  const handleCommentChange = (event) => {
-    onChangeWineComment(event.target.value);
+  const handleChange = (event, onChangeFunction) => {
+    onChangeFunction(event.target.value);
   };
 
   return (
     <div>
-      <div className="input-item">
+      <div className="input-wine">
         <input
+          type="text"
           placeholder="名前を入力"
           value={wineName}
-          onChange={handleNameChange}
+          onChange={(event) => handleChange(event, onChangeWineName)}
         ></input>
       </div>
-      <div className="input-item">
+      <div className="input-wine">
         <input
           type="number"
           placeholder="価格を入力"
           value={winePrice}
-          onChange={handlePriceChange}
+          onChange={(event) => handleChange(event, onChangeWinePrice)}
         ></input>
         <p className="input-disc">数字のみ</p>
       </div>
-      <div className="input-item">
+      <div className="input-wine">
         <input
+          type="text"
           placeholder="コメントを入力"
           value={wineComment}
-          onChange={handleCommentChange}
+          onChange={(event) => handleChange(event, onChangeWineComment)}
         ></input>
       </div>
       <button className="btn-full" onClick={onClick}>

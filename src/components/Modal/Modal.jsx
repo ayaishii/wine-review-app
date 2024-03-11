@@ -3,7 +3,9 @@ import "./Modal.css";
 import { InputWine } from "../InputWine";
 
 export const Modal = (props) => {
-  const { wineList, setWineList } = props;
+  const { wineItem, setWineItem } = props;
+
+  // ワインの情報（名前、価格、説明文）
   const [wineInfo, setWineInfo] = useState({
     name: "",
     price: "",
@@ -29,7 +31,7 @@ export const Modal = (props) => {
     const { name, price, comment } = wineInfo;
     if (!name || !price || !comment) return;
     const newWineItem = { ...wineInfo };
-    setWineList([...wineList, newWineItem]);
+    setWineItem([...wineItem, newWineItem]);
     setWineInfo({
       name: "",
       price: "",
@@ -43,12 +45,13 @@ export const Modal = (props) => {
       <button onClick={toggleModal} className="btn-modal">
         追加
       </button>
-
+      {/* ワインの追加モーダル */}
       {modalOpen && (
         <div className="modal">
           <div onClick={toggleModal} className="overlay"></div>
           <div className="modal-content">
             <h2>ワインを追加する</h2>
+            {/* 入力フィールド */}
             <InputWine
               wineName={wineInfo.name}
               onChangeWineName={(value) => onChange("name", value)}
@@ -56,7 +59,7 @@ export const Modal = (props) => {
               onChangeWinePrice={(value) => onChange("price", value)}
               wineComment={wineInfo.comment}
               onChangeWineComment={(value) => onChange("comment", value)}
-              onClick={onClickAdd} // ここが正しく設定されているか確認してください
+              onClick={onClickAdd}
             />
             <button className="close-modal" onClick={toggleModal}>
               CLOSE

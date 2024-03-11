@@ -4,25 +4,26 @@ import "./styles.css";
 import { WineList } from "./components/WineList";
 
 export const App = () => {
-  const [wineList, setWineList] = useState([]);
+  const [wineItem, setWineItem] = useState([]);
 
+  // ワインの削除
   const onClickDelete = (index) => {
-    const newWineItems = [...wineList];
+    const newWineItems = [...wineItem];
     newWineItems.splice(index, 1);
-    setWineList(newWineItems);
+    setWineItem(newWineItems);
   };
 
   const wineItemNumber = () => {
-    return <p className="wine-item-number">{wineList.length}件</p>;
+    return <p className="wine-item-number">{wineItem.length}件</p>;
   };
 
   return (
     <>
       <div className="container">
         <h1>一覧</h1>
-        <Modal wineList={wineList} setWineList={setWineList} />
+        <Modal wineItem={wineItem} setWineItem={setWineItem} />
         {wineItemNumber()}
-        <WineList list={wineList} onClick={onClickDelete} />
+        <WineList list={wineItem} onClick={onClickDelete} />
       </div>
     </>
   );

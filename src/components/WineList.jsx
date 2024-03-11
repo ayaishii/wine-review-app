@@ -12,7 +12,7 @@ export const WineList = (props) => {
                 className="wine-image"
               />
               <p className="wine-name">{wine.name}</p>
-              <p className="wine-price">{wine.price}</p>
+              <p className="wine-price">￥{wine.price}</p>
               <p className="wine-comment">{wine.comment}</p>
               <button onClick={() => onClick(index)}>削除</button>
             </li>
